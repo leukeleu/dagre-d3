@@ -46,7 +46,7 @@ function normal(parent, id, edge, type) {
     .attr("viewBox", "0 0 10 10")
     .attr("refX", 9)
     .attr("refY", 5)
-    .attr("markerUnits", "strokeWidth")
+    .attr("markerUnits", "userSpaceOnUse")
     .attr("markerWidth", 8)
     .attr("markerHeight", 6)
     .attr("orient", "auto");
@@ -67,7 +67,7 @@ function vee(parent, id, edge, type) {
     .attr("viewBox", "0 0 10 10")
     .attr("refX", 9)
     .attr("refY", 5)
-    .attr("markerUnits", "strokeWidth")
+    .attr("markerUnits", "userSpaceOnUse")
     .attr("markerWidth", 8)
     .attr("markerHeight", 6)
     .attr("orient", "auto");
@@ -88,7 +88,7 @@ function undirected(parent, id, edge, type) {
     .attr("viewBox", "0 0 10 10")
     .attr("refX", 9)
     .attr("refY", 5)
-    .attr("markerUnits", "strokeWidth")
+    .attr("markerUnits", "userSpaceOnUse")
     .attr("markerWidth", 8)
     .attr("markerHeight", 6)
     .attr("orient", "auto");
@@ -123,7 +123,7 @@ function createClusters(selection, g) {
       return node.id;
     })
     .style("opacity", 0);
-  
+
   svgClusters = selection.selectAll("g.cluster");
 
   util.applyTransition(svgClusters, g)
@@ -290,7 +290,7 @@ function createLine(edge, points) {
   var line = (d3.line || d3.svg.line)()
     .x(function(d) { return d.x; })
     .y(function(d) { return d.y; });
-  
+
   (line.curve || line.interpolate)(edge.curve);
 
   return line(points);
@@ -350,7 +350,7 @@ function createNodes(selection, g, shapes) {
     .attr("class", "node")
     .style("opacity", 0);
 
-  svgNodes = selection.selectAll("g.node"); 
+  svgNodes = selection.selectAll("g.node");
 
   svgNodes.each(function(v) {
     var node = g.node(v);
@@ -714,7 +714,7 @@ function addHtmlLabel(root, node) {
   var client = div.node().getBoundingClientRect();
   fo
     .attr("width", client.width)
-    .attr("height", client.height); 
+    .attr("height", client.height);
 
   return fo;
 }
